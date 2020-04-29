@@ -14,7 +14,7 @@ module.exports = {
         axios.get(burl, {
           headers: {
             referer: 'https://live.bilibili.com',
-            rrigin: 'live.bilibili.com'
+            origin: 'live.bilibili.com'
           }
         }).then(
           response => {

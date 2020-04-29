@@ -21,7 +21,7 @@
       </div>
       <div id="role-nav-right">
         <div class="role-nav-btn role-nav-box">
-          <img src="@/assets/menu.png" alt="" />
+          <img src="@/assets/menu.png" alt />
         </div>
       </div>
     </div>
@@ -33,6 +33,7 @@
         <div id="role-ctx-left-name">
           <img id="role-logo" class="animated bounceInLeft" :src="getImgUrl('logo',role.id)" alt />
           <img id="role-name" class="animated bounceInLeft" :src="getImgUrl('name',role.id)" alt />
+          <!-- <img id="role-logo" :src="getImgUrl('logotest',role.id)" alt=""/> -->
         </div>
         <!-- 职业 -->
         <div id="role-ctx-left-job" class="animated bounceInLeft">
@@ -52,31 +53,32 @@
           </div>
         </div>
       </div>
-      <!-- 右区域 -->
-      <div id="role-ctx-right"></div>
     </div>
+
+    <div class="role-container">
+      <img
+        ref="role-img"
+        class="role-npc role-img animated bounceInRight"
+        :src="getImgUrl('lihui',role.id)"
+        @load="loadRole()"
+        alt
+      />
+    </div>
+
+    <div class="role-container">
+      <img :src="getImgUrl('circle',role.id)" alt class="role-img heart" />
+    </div>
+
     <img id="role-arrow" class="animated infinite bounce slow" src="@/assets/arrow.png" />
     <div id="role-bottom"></div>
-    <!-- <paint
-      id="role-paint"
-      class="role-npc animated bounceInRight"
-      :img="getImgUrl('lihui',role.id ) "
-    />-->
-    <img
-      ref="role-img"
-      class="role-npc role-img animated bounceInRight"
-      :src="getImgUrl('lihui',role.id)"
-      @load="loadRole()"
-      alt
-    />
+    <div id="role-line" :style="{'background-color':role.line.color}" />
     <ring
       id="role-ring"
       :color="role.ring.color"
       :height="role.ring.height"
       :width="role.ring.width"
-      :start="start"
+      :start="false"
     />
-    <div id="role-line" />
   </div>
 </template>
 <script>
@@ -143,6 +145,9 @@ export default {
           },
           background: {
             color: "#3d9def"
+          },
+          line:{
+            color:"#ffffff"
           }
         };
       }
@@ -154,24 +159,14 @@ export default {
 };
 </script>
 <style>
-@media screen and (max-width: 480px) {
+#role-ctx-left-name {
+  max-height: 40vh;
+  max-width: 40vw;
+}
+
+@media screen and (max-width: 425px) {
   :root {
     --height: 32px;
-  }
-  #role-nav {
-    height: var(--height);
-  }
-  #role-paint {
-    top: var(--height);
-  }
-  #role-context {
-    height: calc(100vh - var(--height) - 10vh);
-  }
-  #role-nav-left {
-    margin-left: 16px;
-  }
-  #role-nav-right {
-    margin-right: 16px;
   }
   .role-nav-box {
     width: var(--height);
@@ -182,7 +177,7 @@ export default {
     left: calc(39px / 2);
   }
   #role-ctx-left-name {
-    margin-top: calc(var(--height) / 2);
+    margin-top: calc(var(--height));
   }
   #role-ctx-left-job {
     margin-left: calc(39px / 2);
@@ -192,24 +187,33 @@ export default {
     left: calc(50vw - 57px / 2 / 2);
   }
 }
-@media screen and (min-width: 480px) and (max-width: 1280px) {
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  :root {
+    --height: 48px;
+  }
+  .role-nav-box {
+    width: var(--height);
+    height: var(--height);
+    margin-right: calc(var(--height) / 4);
+  }
+  #role-logo {
+    left: calc(39px / 2);
+  }
+  #role-ctx-left-name {
+    margin-top: calc(var(--height));
+    max-width: 30vw;
+  }
+  #role-ctx-left-job {
+    margin-left: calc(39px / 2);
+  }
+  #role-arrow {
+    width: calc(57px / 2);
+    left: calc(50vw - 57px / 2 / 2);
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
   :root {
     --height: 64px;
-  }
-  #role-nav {
-    height: var(--height);
-  }
-  #role-paint {
-    top: var(--height);
-  }
-  #role-context {
-    height: calc(100vh - var(--height) - 10vh);
-  }
-  #role-nav-left {
-    margin-left: 24px;
-  }
-  #role-nav-right {
-    margin-right: 24px;
   }
   .role-nav-box {
     width: var(--height);
@@ -221,6 +225,7 @@ export default {
   }
   #role-ctx-left-name {
     margin-top: calc(var(--height) / 2);
+    max-width: 30vw;
   }
   #role-ctx-left-job {
     margin-left: 39px;
@@ -234,7 +239,21 @@ export default {
   :root {
     --height: 64px;
   }
+  #role-ctx-left-name {
+    margin-top: calc(var(--height));
+    max-width: 30vw;
+  }
 }
+
+.role-container {
+  width: 100%;
+  display: flex;
+  height: calc(100vh - var(--height));
+  top: var(--height);
+  margin: auto;
+  position: absolute;
+}
+
 #role {
   display: block;
   flex-direction: row-reverse;
@@ -243,14 +262,14 @@ export default {
 }
 #role-nav {
   width: 100%;
+  height: var(--height);
   text-align: left;
   display: inline-flex;
 }
 #role-context {
   width: 100%;
   display: flex;
-  /* height: 95vh; */
-  /* background: url('../assets/lihui02.png'); */
+  height: calc(100vh - var(--height));
 }
 #role-bottom {
   height: 10vh;
@@ -268,11 +287,14 @@ export default {
   width: 50%;
   display: flex;
   height: 100%;
+  margin-left: var(--height) / 3;
 }
 
 #role-nav-right {
   width: 50%;
   height: 100%;
+  margin-right: var(--height) / 3;
+
   display: flex;
   flex-direction: row-reverse;
 }
@@ -315,12 +337,13 @@ export default {
   z-index: 10;
 }
 .role-img {
-  top: var(--height);
-  left: 0px;
-  position: absolute;
+  /* top: var(--height); */
+  /* left: 0px; */
+  /* position: absolute; */
   max-height: 200%;
   height: 100%;
   max-width: 200%;
+  margin: auto;
 }
 #role-ring {
   left: 0vw;
@@ -328,16 +351,15 @@ export default {
   position: absolute;
   z-index: 0;
 }
-#role-paint {
-  left: 0vw;
-  display: none;
-  position: absolute;
-}
 #role-arrow {
   position: absolute;
-  bottom: 10vh;
+  bottom: calc(10vh + 32px);
   z-index: 20;
 }
+#role-ctx-left-job {
+  margin-bottom: calc(10vh + 32px);
+}
+
 #role-ctx-right {
   height: 100%;
   width: 50vw;
@@ -350,7 +372,7 @@ export default {
   position: relative;
 }
 #role-job-checkbox-txt {
-  height: 100%;
+  /* height: 100%; */
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -365,7 +387,7 @@ export default {
   z-index: 5;
 }
 #role-job-checkbox-img {
-  height: 100%;
+  /* height: 100%; */
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -383,29 +405,48 @@ export default {
 </style>
 
 <style>
-
-@keyframes beat{
-	from {
-		-moz-transform:scale(1,1);
-		-webkit-transform:scale(1,1);
-		-o-transform:scale(1,1);
-		transform:scale(1,1);
-	}
-	50% {
-		-moz-transform:scale(1.15,1.15);
-		-webkit-transform:scale(1.15,1.15);
-		-o-transform:scale(1.15,1.15);
-		transform:scale(1.15,1.15);
-	}
-	to {
-		-moz-transform:scale(1,1);
-		-webkit-transform:scale(1,1);
-		-o-transform:scale(1,1);
-		transform:scale(1,1);
-	}
+@keyframes beatOut {
+  from {
+    -moz-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  50% {
+    -moz-transform: scale(1.15, 1.15);
+    -webkit-transform: scale(1.15, 1.15);
+    -o-transform: scale(1.15, 1.15);
+    transform: scale(1.15, 1.15);
+  }
+  to {
+    -moz-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}
+@keyframes beatIn {
+  from {
+    -moz-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  50% {
+    -moz-transform: scale(0.95, 0.95);
+    -webkit-transform: scale(0.95, 0.95);
+    -o-transform: scale(0.95, 0.95);
+    transform: scale(0.95, 0.95);
+  }
+  to {
+    -moz-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
 }
 
-.heart{
-	animation: beat 0.5s infinite;
+.heart {
+  animation: beatIn 0.5s infinite;
 }
 </style>
