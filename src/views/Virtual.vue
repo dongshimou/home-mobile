@@ -12,7 +12,7 @@
               :size="{ width: '50px', height: '50px' }"
               :style="{ 'margin-top' : ['calc(50vh - 25px)']}"
             ></vue-loading>
-            <role v-for="(role,index) in roles" v-show="index==cur" :role="role" :key="index" />
+            <role v-for="(role,index) in roles" v-show="success&&index==cur" :role="role" :key="index" />
           </div>
           <!-- <div class="page-1 page">
             <img src="@/assets/1.png" />
@@ -58,11 +58,20 @@ export default {
             wechat: "//wexin.com",
             qq: "//qq.com"
           },
-          job: {
-            sing: true,
-            game: true,
-            dance: true
-          },
+          job: [
+            {
+              name:"sing",
+              color:"#2e8cdeff"
+            },
+            {
+              name:"game",
+              color:"#ffffff00"
+            },
+            {
+              name:"dance",
+              color:"#ffffff00"
+            }
+          ],
           ring: {
             color: "#1b7eeb",
             height: window.innerHeight,
@@ -84,11 +93,20 @@ export default {
             wechat: "//wexin.com",
             qq: "//qq.com"
           },
-          job: {
-            sing: true,
-            game: true,
-            dance: true
-          },
+          job: [
+            {
+              name:"sing",
+              color:"#ffffff00"
+            },
+            {
+              name:"game",
+              color:"#ffffff00"
+            },
+            {
+              name:"dance",
+              color:"#ffffff00"
+            }
+          ],
           ring: {
             color: "#171241",
             height: window.innerHeight,
@@ -109,11 +127,20 @@ export default {
             wechat: "//wexin.com",
             qq: "//qq.com"
           },
-          job: {
-            sing: true,
-            game: true,
-            dance: true
-          },
+          job: [
+            {
+              name:"sing",
+              color:"#ffffff00"
+            },
+            {
+              name:"game",
+              color:"#ffffff00"
+            },
+            {
+              name:"dance",
+              color:"#ffffff00"
+            }
+          ],
           ring: {
             color: "#fd9964",
             height: window.outerHeight,
@@ -134,11 +161,20 @@ export default {
             wechat: "//wexin.com",
             qq: "//qq.com"
           },
-          job: {
-            sing: true,
-            game: true,
-            dance: true
-          },
+          job: [
+            {
+              name:"sing",
+              color:"#ffffff00"
+            },
+            {
+              name:"game",
+              color:"#ffffff00"
+            },
+            {
+              name:"dance",
+              color:"#ffffff00"
+            }
+          ],
           ring: {
             color: "#f77196",
             height: window.innerHeight,
@@ -159,11 +195,20 @@ export default {
             wechat: "//wexin.com",
             qq: "//qq.com"
           },
-          job: {
-            sing: true,
-            game: true,
-            dance: true
-          },
+          job: [
+            {
+              name:"game",
+              color:"#ffffff00"
+            },
+            {
+              name:"sing",
+              color:"#ffffff00"
+            },
+            {
+              name:"dance",
+              color:"#ffffff00"
+            }
+          ],
           ring: {
             color: "#25d9af",
             height: window.innerHeight,
@@ -183,6 +228,7 @@ export default {
   },
   methods: {
     load: function(i) {
+      this.cur = i;
       console.log("load", i);
       this.role = this.roles[i];
       let func = this.load;
@@ -190,21 +236,20 @@ export default {
       if (i >= this.roles.length) {
         i = 0;
       }
-      this.cur = i;
       setTimeout(func, 5000, i);
     },
     loading: function() {
       let that = this;
       setTimeout(function() {
         that.success = true;
+        that.load(0);
       }, 2000);
     }
   },
   created: function() {},
   mounted: function() {
     this.height = window.innerHeight + "px";
-    this.load(0);
-    this.success = true;
+    this.loading();
   }
 };
 </script>

@@ -40,15 +40,11 @@
           <div id="role-job-checkbox">
             <!-- 文字 -->
             <div id="role-job-checkbox-txt">
-              <img src="@/assets/sing.png" alt />
-              <img src="@/assets/game.png" alt />
-              <img src="@/assets/dance.png" alt />
+              <img v-for="(job,index) in role.job" :src="getImgUrl('label',job.name)" alt="" :key="index">
             </div>
             <!-- 图标 -->
             <div id="role-job-checkbox-img">
-              <img class="role-job-checkbox-img-class" src="@/assets/job1.png" alt />
-              <img class="role-job-checkbox-img-class" src="@/assets/job2.png" alt />
-              <img class="role-job-checkbox-img-class" src="@/assets/job3.png" alt />
+              <img class="role-job-checkbox-img-class"  v-for="(job,index) in role.job" :src="getImgUrl('icon',job.name)" alt="" :key="index" :style="{'background-color':job.color}">
             </div>
           </div>
         </div>
@@ -132,11 +128,20 @@ export default {
             wechat: "//wechat.com",
             qq: "//qq.com"
           },
-          job: {
-            sing: true,
-            game: true,
-            dance: true
-          },
+          job: [
+            {
+              name:"sing",
+              color:"#ffffff00"
+            },
+            {
+              name:"game",
+              color:"#ffffff00"
+            },
+            {
+              name:"dance",
+              color:"#ffffff00"
+            }
+          ],
           ring: {
             color: "#1b7eeb",
             height: window.outerHeight,
