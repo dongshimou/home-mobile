@@ -18,6 +18,10 @@ Vue.use(VueResize)
 import VueResource from 'vue-resource'
 Vue.use(VueResource);
 
+// loading
+import VueLoading from 'vue-loading-template'
+Vue.use(VueLoading, /** options **/)
+
 Vue.config.productionTip = false
 
 new Vue({

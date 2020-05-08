@@ -1,7 +1,9 @@
 <template>
   <div class="live">
     <div id="live-box">
+      <a :href="'//live.bilibili.com/'+role.roomId">
       <img :src="getImgUrl('pixel',role.id)" alt :class="{imgGray:!isOnline}" />
+      </a>
       <div class="live-label">
       <!-- <label class="new-label" v-if="role.isNew">New!</label> -->
       <img src="@/assets/new.png" alt="" v-if="role.isNew"/>
@@ -77,8 +79,8 @@ export default {
     margin-bottom: 32px;
   }
   #live-box {
-    margin-left: 16px;
-    margin-right: 16px;
+    /* margin-left: 16px; */
+    /* margin-right: 16px; */
     max-height: 50px;
     max-width: 50px;
   }
@@ -88,8 +90,8 @@ export default {
     margin-bottom: 64px;
   }
   #live-box {
-    margin-left: 32px;
-    margin-right: 32px;
+    /* margin-left: 32px; */
+    /* margin-right: 32px; */
     max-height: 100px;
     max-width: 100px;
   }
@@ -101,7 +103,11 @@ export default {
   }
 }
 #live-box {
+  margin: auto;
   height: 100%;
+  width: 100%;
+}
+#live-box>a>img{
   width: 100%;
 }
 .live-label{

@@ -1,21 +1,28 @@
 <template>
   <div id="virtual">
-    <div class="fullpage-root">
+    <div class="fullpage-root" :style="{height:height}">
       <div class="fullpage-container">
         <div class="fullpage-wp" v-fullpage="opts" ref="fullpage">
           <!-- page -->
           <div class="page-0 page">
-            <role :role="role"></role>
+            <vue-loading
+              v-show="!success"
+              type="spin"
+              color="#ffffff"
+              :size="{ width: '50px', height: '50px' }"
+              :style="{ 'margin-top' : ['calc(50vh - 25px)']}"
+            ></vue-loading>
+            <role v-for="(role,index) in roles"  v-show="index==cur" :role="role" :key="index" />
           </div>
-          <div class="page-1 page">
+          <!-- <div class="page-1 page">
             <img src="@/assets/1.png" />
-          </div>
+          </div> -->
           <div class="page-2 page">
             <room />
           </div>
           <!-- <div class="page-3 page">
             <img src="@/assets/2.png" />
-          </div>-->
+          </div> -->
         </div>
       </div>
     </div>
@@ -35,6 +42,9 @@ export default {
   },
   data: function() {
     return {
+      success: false,
+      height:'0px',
+      cur:0,
       opts: {
         start: 0,
         dir: "v",
@@ -62,10 +72,11 @@ export default {
           background: {
             color: "#3d9def"
           },
-          line:{
-            color:"#ffffff"
+          line: {
+            color: "#ffffff"
           }
         },
+        
         {
           id: 1, // 0 1 6 7 8
           link: {
@@ -87,8 +98,8 @@ export default {
           background: {
             color: "#34288e"
           },
-          line:{
-            color:"#ffffff"
+          line: {
+            color: "#ffffff"
           }
         },
         {
@@ -112,8 +123,8 @@ export default {
           background: {
             color: "#ffc07d"
           },
-          line:{
-            color:"#ffffff"
+          line: {
+            color: "#ffffff"
           }
         },
         {
@@ -137,8 +148,8 @@ export default {
           background: {
             color: "#ffa3be"
           },
-          line:{
-            color:"#ffffff"
+          line: {
+            color: "#ffffff"
           }
         },
         {
@@ -162,8 +173,8 @@ export default {
           background: {
             color: "#78f3cc"
           },
-          line:{
-            color:"#ffffff"
+          line: {
+            color: "#ffffff"
           }
         }
       ],
@@ -179,27 +190,38 @@ export default {
       if (i >= this.roles.length) {
         i = 0;
       }
+      this.cur=i
       setTimeout(func, 5000, i);
+    },
+    loading: function() {
+      let that=this
+      setTimeout(function(){
+        that.success=true
+      },2000)
     }
   },
   created: function() {
     this.load(0);
+    this.success=true
   },
-  mounted: function() {}
+  mounted: function() {
+    this.height=window.innerHeight+'px'
+  }
 };
 </script>
 
 <style>
-#virtual {
-  height: 100vh;
+
+.page-2 {
+  background-color: black;
 }
+</style>
+
+<style scoped>
 img {
   width: auto;
   height: auto;
   max-width: 100%;
   max-height: 100%;
-}
-.page-2 {
-  background-color: black;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="room">
     <div id="room-title">
-      <label>点击跳转到主播直播间</label>
+      <label>{{label}}</label>
     </div>
 
     <div id="room-context">
@@ -23,6 +23,7 @@ export default {
   },
   data: function() {
     return {
+      label:"不去直播间坐坐么?",
       roles: [
         {
           id: 0,
@@ -82,8 +83,8 @@ export default {
   background-color: black;
 }
 #room-title {
-  margin-top: 15vh;
-  margin-bottom: 3vh;
+  margin-top: 12vh;
+  margin-bottom: 5vh;
   width: 100%;
 }
 #room-title > label {
@@ -101,6 +102,8 @@ export default {
   width: 30vw;
 }
 #room-ref {
+  position:absolute;
+  bottom: 5vh;
   width: 100%;
 }
 #room-ref > img {

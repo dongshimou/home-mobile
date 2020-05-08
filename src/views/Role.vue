@@ -146,8 +146,8 @@ export default {
           background: {
             color: "#3d9def"
           },
-          line:{
-            color:"#ffffff"
+          line: {
+            color: "#ffffff"
           }
         };
       }
@@ -155,15 +155,11 @@ export default {
   },
   mounted: function() {
     this.checkScreen();
+    this.$emit("load");
   }
 };
 </script>
 <style>
-#role-ctx-left-name {
-  max-height: 40vh;
-  max-width: 40vw;
-}
-
 @media screen and (max-width: 425px) {
   :root {
     --height: 32px;
@@ -183,8 +179,8 @@ export default {
     margin-left: calc(39px / 2);
   }
   #role-arrow {
-    width: calc(57px / 2);
-    left: calc(50vw - 57px / 2 / 2);
+    width: calc(57px / 3 * 2);
+    left: calc(50vw - 57px / 3);
   }
 }
 @media screen and (min-width: 426px) and (max-width: 768px) {
@@ -207,8 +203,8 @@ export default {
     margin-left: calc(39px / 2);
   }
   #role-arrow {
-    width: calc(57px / 2);
-    left: calc(50vw - 57px / 2 / 2);
+    width: calc(57px);
+    left: calc(50vw - 57px / 2);
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
@@ -248,12 +244,17 @@ export default {
 .role-container {
   width: 100%;
   display: flex;
-  height: calc(100vh - var(--height));
+  height: calc(115% - var(--height));
   top: var(--height);
   margin: auto;
   position: absolute;
 }
-
+.role-nav-box > a > img {
+  width: 100%;
+}
+.role-nav-box > img {
+  width: 100%;
+}
 #role {
   display: block;
   flex-direction: row-reverse;
@@ -269,7 +270,7 @@ export default {
 #role-context {
   width: 100%;
   display: flex;
-  height: calc(100vh - var(--height));
+  height: calc(100% - var(--height));
 }
 #role-bottom {
   height: 10vh;
@@ -287,15 +288,15 @@ export default {
   width: 50%;
   display: flex;
   height: 100%;
-  margin-left: var(--height) / 3;
+  margin-left: calc(var(--height) / 3);
+  flex-direction: row;
 }
 
 #role-nav-right {
   width: 50%;
   height: 100%;
-  margin-right: var(--height) / 3;
-
   display: flex;
+  margin-right: calc(var(--height) / 3);
   flex-direction: row-reverse;
 }
 .role-nav-btn {
@@ -312,7 +313,7 @@ export default {
 }
 #role-logo {
   position: relative;
-  max-width: 130%;
+  max-width: 110%;
   z-index: 5;
 }
 #role-name {
@@ -353,11 +354,12 @@ export default {
 }
 #role-arrow {
   position: absolute;
-  bottom: calc(10vh + 32px);
+  /* bottom: calc(5vh); */
+  bottom: 3vh;
   z-index: 20;
 }
 #role-ctx-left-job {
-  margin-bottom: calc(10vh + 32px);
+  margin-bottom: 32px;
 }
 
 #role-ctx-right {
