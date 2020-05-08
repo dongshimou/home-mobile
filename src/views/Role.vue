@@ -129,7 +129,7 @@ export default {
           id: 0, // 0 1 6 7 8
           link: {
             weibo: "//weibo.com",
-            wechat: "//wexin.com",
+            wechat: "//wechat.com",
             qq: "//qq.com"
           },
           job: {

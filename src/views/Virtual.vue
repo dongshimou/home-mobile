@@ -12,17 +12,17 @@
               :size="{ width: '50px', height: '50px' }"
               :style="{ 'margin-top' : ['calc(50vh - 25px)']}"
             ></vue-loading>
-            <role v-for="(role,index) in roles"  v-show="index==cur" :role="role" :key="index" />
+            <role v-for="(role,index) in roles" v-show="index==cur" :role="role" :key="index" />
           </div>
           <!-- <div class="page-1 page">
             <img src="@/assets/1.png" />
-          </div> -->
+          </div>-->
           <div class="page-2 page">
             <room />
           </div>
           <!-- <div class="page-3 page">
             <img src="@/assets/2.png" />
-          </div> -->
+          </div>-->
         </div>
       </div>
     </div>
@@ -43,8 +43,8 @@ export default {
   data: function() {
     return {
       success: false,
-      height:'0px',
-      cur:0,
+      height: "0px",
+      cur: 0,
       opts: {
         start: 0,
         dir: "v",
@@ -65,8 +65,8 @@ export default {
           },
           ring: {
             color: "#1b7eeb",
-            height: window.outerHeight,
-            width: window.outerWidth,
+            height: window.innerHeight,
+            width: window.innerWidth,
             space: 24
           },
           background: {
@@ -76,7 +76,7 @@ export default {
             color: "#ffffff"
           }
         },
-        
+
         {
           id: 1, // 0 1 6 7 8
           link: {
@@ -90,9 +90,9 @@ export default {
             dance: true
           },
           ring: {
-            color: "#1b7eeb",
-            height: window.outerHeight,
-            width: window.outerWidth,
+            color: "#171241",
+            height: window.innerHeight,
+            width: window.innerWidth,
             space: 24
           },
           background: {
@@ -115,7 +115,7 @@ export default {
             dance: true
           },
           ring: {
-            color: "#223344",
+            color: "#fd9964",
             height: window.outerHeight,
             width: window.outerWidth,
             space: 24
@@ -140,9 +140,9 @@ export default {
             dance: true
           },
           ring: {
-            color: "#1b7eeb",
-            height: window.outerHeight,
-            width: window.outerWidth,
+            color: "#f77196",
+            height: window.innerHeight,
+            width: window.innerWidth,
             space: 24
           },
           background: {
@@ -165,9 +165,9 @@ export default {
             dance: true
           },
           ring: {
-            color: "#1b7eeb",
-            height: window.outerHeight,
-            width: window.outerWidth,
+            color: "#25d9af",
+            height: window.innerHeight,
+            width: window.innerWidth,
             space: 24
           },
           background: {
@@ -190,28 +190,26 @@ export default {
       if (i >= this.roles.length) {
         i = 0;
       }
-      this.cur=i
+      this.cur = i;
       setTimeout(func, 5000, i);
     },
     loading: function() {
-      let that=this
-      setTimeout(function(){
-        that.success=true
-      },2000)
+      let that = this;
+      setTimeout(function() {
+        that.success = true;
+      }, 2000);
     }
   },
-  created: function() {
-    this.load(0);
-    this.success=true
-  },
+  created: function() {},
   mounted: function() {
-    this.height=window.innerHeight+'px'
+    this.height = window.innerHeight + "px";
+    this.load(0);
+    this.success = true;
   }
 };
 </script>
 
 <style>
-
 .page-2 {
   background-color: black;
 }
