@@ -39,7 +39,7 @@ export default {
         },
         {
           id: 6,
-          isNew: true,
+          isNew: false,
           name: "陆桃",
           roomId: 21469273
         },
@@ -89,7 +89,7 @@ export default {
         },
         {
           id: 100,
-          isNew: false,
+          isNew: true,
           name: "未知",
           roomId: 2233
         }
