@@ -42,7 +42,8 @@ export default {
   },
   data: function() {
     return {
-      url: "/proxy/live",
+      // url: "/proxy/live",
+      url:"//localhost:5000/proxy/live",
       isOnline: false
     };
   },
