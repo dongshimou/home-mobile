@@ -44,7 +44,7 @@
             </div>
             <!-- 图标 -->
             <div id="role-job-checkbox-img">
-              <img class="role-job-checkbox-img-class"  v-for="(job,index) in role.job" :src="getImgUrl('icon',job.name)" alt="" :key="index" :style="{'background-color':job.color}">
+              <img class="role-job-checkbox-img-class"  v-for="(job,index) in role.job" :src="getImgUrl('icon',job.name)" alt="" :key="index" :style="{'background-color':job.color}" :class="{imgLight:!istrans(job.color)}">
             </div>
           </div>
         </div>
@@ -97,6 +97,9 @@ export default {
   methods: {
     getImgUrl(icon, id) {
       return require("@/assets/" + icon + id + ".png");
+    },
+    istrans(c){
+      return c=='#ffffff00'
     },
     checkScreen() {
       let width = window.innerWidth;
@@ -406,6 +409,16 @@ export default {
   height: 50%;
   z-index: 5;
   border-radius: 3px;
+}
+</style>
+
+<style scoped>
+.imgLight{
+  filter :brightness(100%);
+  -webkit-filter: brightness(100%);
+  -moz-filter: brightness(100%);
+  -ms-filter: brightness(100%);
+  -o-filter: brightness(100%);
 }
 </style>
 
