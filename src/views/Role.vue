@@ -31,8 +31,8 @@
       <div id="role-ctx-left">
         <!-- logo -->
         <div id="role-ctx-left-name">
-          <img id="role-logo" class="animated bounceInLeft" :src="getImgUrl('logo',role.id)" alt />
-          <img id="role-name" class="animated bounceInLeft" :src="getImgUrl('name',role.id)" alt />
+          <img id="role-logo" class="animated bounceInLeft" :src="getImgUrl('logo/',role.id)" alt />
+          <img id="role-name" class="animated bounceInLeft" :src="getImgUrl('name/',role.id)" alt />
           <!-- <img id="role-logo" :src="getImgUrl('logotest',role.id)" alt=""/> -->
         </div>
         <!-- 职业 -->
@@ -55,7 +55,7 @@
       <img
         ref="role-img"
         class="role-npc role-img animated bounceInRight"
-        :src="getImgUrl('lihui',role.id)"
+        :src="getImgUrl('lihui/',role.id)"
         @load="loadRole()"
         alt
       />
