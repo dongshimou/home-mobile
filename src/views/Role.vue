@@ -404,6 +404,7 @@ export default {
   max-height: 100%;
   width: 50%;
   height: 50%;
+  z-index: 5;
 }
 .role-job-checkbox-img-class:hover {
   background-color: #1b7eeb;
