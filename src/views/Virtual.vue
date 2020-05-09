@@ -61,7 +61,7 @@ export default {
           job: [
             {
               name:"sing",
-              color:"#2e8cdeff"
+              color:"#176fe3"
             },
             {
               name:"game",
@@ -96,7 +96,7 @@ export default {
           job: [
             {
               name:"sing",
-              color:"#ffffff00"
+              color:"#6435ce"
             },
             {
               name:"game",
@@ -130,7 +130,7 @@ export default {
           job: [
             {
               name:"sing",
-              color:"#ffffff00"
+              color:"#ff886c"
             },
             {
               name:"game",
@@ -164,7 +164,7 @@ export default {
           job: [
             {
               name:"sing",
-              color:"#ffffff00"
+              color:"#ff82c4"
             },
             {
               name:"game",
@@ -198,7 +198,7 @@ export default {
           job: [
             {
               name:"game",
-              color:"#ffffff00"
+              color:"#13aea6"
             },
             {
               name:"sing",

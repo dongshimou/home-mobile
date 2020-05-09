@@ -62,7 +62,7 @@
     </div>
 
     <div class="role-container">
-      <img :src="getImgUrl('circle',role.id)" alt class="role-img heart" />
+      <img :src="getImgUrl('circle/',role.id)" alt class="role-img heart" />
     </div>
 
     <img id="role-arrow" class="animated infinite bounce slow" src="@/assets/arrow.png" />
@@ -405,10 +405,7 @@ export default {
   width: 50%;
   height: 50%;
   z-index: 5;
-}
-.role-job-checkbox-img-class:hover {
-  background-color: #1b7eeb;
-  border-radius: 10px;
+  border-radius: 3px;
 }
 </style>
 

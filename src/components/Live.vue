@@ -2,7 +2,7 @@
   <div class="live">
     <div id="live-box">
       <a :href="'//live.bilibili.com/'+role.roomId">
-      <img :src="getImgUrl('pixel',role.id)" alt :class="{imgGray:!isOnline}" />
+      <img :src="getImgUrl('',role.name)" alt :class="{imgGray:!isOnline}" />
       </a>
       <div class="live-label">
       <!-- <label class="new-label" v-if="role.isNew">New!</label> -->
@@ -19,7 +19,7 @@ export default {
   name: "live",
   methods: {
     getImgUrl(icon, id) {
-      return require("@/assets/" + icon + id + ".png");
+      return require("@/assets/pixel/" + icon + id + ".png");
     },
     load: function(roomId) {
       this.$http
@@ -54,6 +54,7 @@ export default {
         return {
           id: 0,
           isNew: false,
+          name:"铃果",
           isOnline: false,
           roomId: 4006440
         };

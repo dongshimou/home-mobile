@@ -23,36 +23,72 @@ export default {
   },
   data: function() {
     return {
-      label:"不去直播间坐坐么?",
+      label: "不去直播间坐坐么?",
       roles: [
         {
           id: 0,
           isNew: false,
-          roomId: 4006440
+          name: "铃果",
+          roomId: 416203727
         },
         {
           id: 6,
           isNew: true,
-          roomId: 523
+          name: "陆桃",
+          roomId: 431537245
         },
         {
-          id: 0,
+          id: 1,
           isNew: false,
-          roomId: 45678
+          name: "柚一",
+          roomId: 474628506
         },
         {
-          id: 6,
+          id: 3,
           isNew: false,
-          roomId: 1234
+          name: "山梨",
+          roomId: 453801943
         },
         {
-          id: 0,
+          id: 4,
           isNew: false,
+          name: "时音",
+          roomId: 446409293
+        },
+        {
+          id: 5,
+          isNew: false,
+          name: "双荔",
+          roomId: 21738080
+        },
+        {
+          id: 8,
+          isNew: false,
+          name: "芭娜娜",
+          roomId: 21664773
+        },
+        {
+          id: 9,
+          isNew: false,
+          name: "橘九",
           roomId: 1212
         },
         {
-          id: 6,
+          id: 7,
           isNew: false,
+          name: "七柠",
+          roomId: 415578378
+        },
+        {
+          id: 10,
+          isNew: false,
+          name: "千橙",
+          roomId: 21738056
+        },
+        {
+          id: 100,
+          isNew: false,
+          name: "未知",
           roomId: 2233
         }
       ]
@@ -102,12 +138,12 @@ export default {
   width: 30vw;
 }
 #room-ref {
-  position:absolute;
+  position: absolute;
   bottom: 5vh;
   width: 100%;
 }
 #room-ref > img {
-  margin-top:5vh;
+  margin-top: 5vh;
   width: 40%;
   max-width: 100%;
 }
