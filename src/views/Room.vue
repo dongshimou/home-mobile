@@ -32,22 +32,16 @@ export default {
           roomId: 21376408
         },
         {
+          id: 7,
+          isNew: false,
+          name: "七柠",
+          roomId: 21379626
+        },
+        {
           id: 6,
           isNew: true,
           name: "陆桃",
           roomId: 21469273
-        },
-        {
-          id: 1,
-          isNew: false,
-          name: "柚一",
-          roomId: 21623289
-        },
-        {
-          id: 3,
-          isNew: false,
-          name: "山梨",
-          roomId: 21545501
         },
         {
           id: 4,
@@ -56,10 +50,17 @@ export default {
           roomId: 21517635
         },
         {
-          id: 5,
+          id: 3,
           isNew: false,
-          name: "双荔",
-          roomId: 21738080
+          name: "山梨",
+          roomId: 21545501
+        },
+
+        {
+          id: 1,
+          isNew: false,
+          name: "柚一",
+          roomId: 21623289
         },
         {
           id: 8,
@@ -68,17 +69,18 @@ export default {
           roomId: 21664773
         },
         {
-          id: 9,
+          id: 5,
           isNew: false,
-          name: "橘九",
-          roomId: 21420315
+          name: "双荔",
+          roomId: 21738080
         },
-        {
-          id: 7,
-          isNew: false,
-          name: "七柠",
-          roomId: 21379626
-        },
+
+        // {
+        //   id: 9,
+        //   isNew: false,
+        //   name: "橘九",
+        //   roomId: 21420315
+        // },
         {
           id: 10,
           isNew: false,

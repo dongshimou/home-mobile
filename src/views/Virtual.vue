@@ -164,7 +164,7 @@ export default {
           job: [
             {
               name:"sing",
-              color:"#ff82c4"
+              color:"#ff82a4ff"
             },
             {
               name:"game",
