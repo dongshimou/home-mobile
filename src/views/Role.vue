@@ -136,8 +136,8 @@ export default {
     },
     loadSuccess() {
       if (this.load_role && this.load_ring) {
-        this.$emit("load");
-        console.log("emit load")
+        this.$emit("loadimg");
+        console.log("emit loadimg")
       }
     }
   },

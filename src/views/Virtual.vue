@@ -12,7 +12,7 @@
               :size="{ width: '50px', height: '50px' }"
               :style="{ 'margin-top' : ['calc(50vh - 25px)']}"
             ></vue-loading>
-            <role v-for="(role,index) in roles" v-show="success&&index==cur" :role="role" :key="index" @load="loadCount()" />
+            <role v-for="(role,index) in roles" v-show="success&&index==cur" :role="role" :key="index" @loadimg="loadCount()" />
           </div>
           <!-- <div class="page-1 page">
             <img src="@/assets/1.png" />
