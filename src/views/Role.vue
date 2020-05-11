@@ -270,13 +270,17 @@ export default {
     left: calc(50vw - 57px / 2);
   }
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1025px) {
   :root {
     --height: 64px;
   }
   #role-ctx-left-name {
     margin-top: calc(var(--height));
     max-width: 30vw;
+  }
+    #role-arrow {
+    width: 57px;
+    left: calc(50vw - 57px / 2);
   }
 }
 
@@ -380,9 +384,9 @@ export default {
   /* top: var(--height); */
   /* left: 0px; */
   /* position: absolute; */
-  max-height: 200%;
-  height: 100%;
-  max-width: 200%;
+  max-height: 100%;
+  min-height: 100%;
+  max-width: 300%;
   margin: auto;
 }
 #role-ring {

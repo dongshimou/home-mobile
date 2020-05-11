@@ -5,7 +5,7 @@
       type="spin"
       color="#ffffff"
       :size="{ width: '50px', height: '50px' }"
-      :style="{ 'margin-top' : ['calc(50vh - 25px)']}"
+      :style="{ 'margin-top' : ['calc(50vh - 25px)'], 'margin-bottom':['calc(50vh - 25px)']}"
     ></vue-loading>
     <div class="fullpage-root" :style="{height:height}">
       <div class="fullpage-container">
@@ -281,7 +281,7 @@ export default {
       }
       this.initSize();
     },
-    initSize:function(){
+    initSize: function() {
       this.height = window.innerHeight + "px";
     }
   },
