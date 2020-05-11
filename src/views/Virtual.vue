@@ -19,11 +19,11 @@
               :key="index"
               @loadimg="loadCount()"
             />
-            <!-- <role :role="roles[0]" @load="success=true" /> -->
+            <!-- <role :role="roles[1]" @load="success=true" /> -->
           </div>
-          <!-- <div class="page-1 page">
+          <div class="page-1 page">
             <img src="@/assets/1.png" />
-          </div>-->
+          </div>
           <div class="page-2 page" :style="{height:height}">
             <room />
           </div>

@@ -31,8 +31,6 @@
       <div id="role-ctx-left">
         <!-- logo -->
         <div id="role-ctx-left-name">
-          <img id="role-logo" class="animated bounceInLeft" :src="getImgUrl('logo/',role.id)" alt />
-          <img id="role-name" class="animated bounceInLeft" :src="getImgUrl('name/',role.id)" alt />
           <!-- <img id="role-logo" :src="getImgUrl('logotest',role.id)" alt=""/> -->
         </div>
         <!-- 职业 -->
@@ -63,7 +61,14 @@
         </div>
       </div>
     </div>
-
+    <div class="role-container">
+      <div id="role-logo">
+        <img class="animated bounceInLeft" :src="getImgUrl('logo/',role.id)" alt />
+      </div>
+      <div id="role-name">
+        <img class="animated bounceInLeft" :src="getImgUrl('name/',role.id)" alt />
+      </div>
+    </div>
     <div class="role-container">
       <img
         ref="role-img"
@@ -75,8 +80,12 @@
     </div>
     <div class="role-container">
       <!-- <img :src="getImgUrl('circle/',role.id)" alt class="role-img heart" @load="load_ring=true" /> -->
-      <img :src="getImgUrl('circle/',role.id)" alt class="role-img animated infinite pulse
-faster" @load="load_ring=true" />
+      <img
+        :src="getImgUrl('circle/',role.id)"
+        alt
+        class="role-img animated infinite pulse faster"
+        @load="load_ring=true"
+      />
     </div>
 
     <img id="role-arrow" class="animated infinite bounce slow" src="@/assets/arrow.png" />
@@ -88,7 +97,7 @@ faster" @load="load_ring=true" />
       :height="role.ring.height"
       :width="role.ring.width"
       :start="false"
-    /> -->
+    />-->
   </div>
 </template>
 <script>
@@ -139,7 +148,7 @@ export default {
     loadSuccess() {
       if (this.load_role && this.load_ring) {
         this.$emit("loadimg");
-        console.log("emit loadimg")
+        console.log("emit loadimg");
       }
     }
   },
@@ -202,6 +211,7 @@ export default {
 @media screen and (max-width: 425px) {
   :root {
     --height: 32px;
+    --itemLeft: 39px;
   }
   .role-nav-box {
     width: var(--height);
@@ -209,13 +219,13 @@ export default {
     margin-right: calc(var(--height) / 4);
   }
   #role-logo {
-    left: calc(39px / 2);
+    margin-left: calc(var(--itemLeft) / 2);
   }
   #role-ctx-left-name {
     margin-top: calc(var(--height));
   }
   #role-ctx-left-job {
-    margin-left: calc(39px / 2);
+    margin-left: calc(var(--itemLeft) / 2);
   }
   #role-arrow {
     width: calc(57px / 3 * 2);
@@ -225,6 +235,7 @@ export default {
 @media screen and (min-width: 426px) and (max-width: 768px) {
   :root {
     --height: 48px;
+    --itemLeft: 39px;
   }
   .role-nav-box {
     width: var(--height);
@@ -232,14 +243,14 @@ export default {
     margin-right: calc(var(--height) / 4);
   }
   #role-logo {
-    left: calc(39px / 2);
+    margin-left: calc(var(--itemLeft) / 2);
   }
   #role-ctx-left-name {
     margin-top: calc(var(--height));
     max-width: 30vw;
   }
   #role-ctx-left-job {
-    margin-left: calc(39px / 2);
+    margin-left: calc(var(--itemLeft) / 2);
   }
   #role-arrow {
     width: calc(57px);
@@ -249,6 +260,7 @@ export default {
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   :root {
     --height: 64px;
+    --itemLeft: 39px;
   }
   .role-nav-box {
     width: var(--height);
@@ -256,14 +268,14 @@ export default {
     margin-right: 24px;
   }
   #role-logo {
-    left: 39px;
+    margin-left: var(--itemLeft);
   }
   #role-ctx-left-name {
     margin-top: calc(var(--height) / 2);
     max-width: 30vw;
   }
   #role-ctx-left-job {
-    margin-left: 39px;
+    margin-left: var(--itemLeft);
   }
   #role-arrow {
     width: 57px;
@@ -278,19 +290,10 @@ export default {
     margin-top: calc(var(--height));
     max-width: 30vw;
   }
-    #role-arrow {
+  #role-arrow {
     width: 57px;
     left: calc(50vw - 57px / 2);
   }
-}
-
-.role-container {
-  width: 100%;
-  display: flex;
-  height: calc(115% - var(--height));
-  top: var(--height);
-  margin: auto;
-  position: absolute;
 }
 .role-nav-box > a > img {
   width: 100%;
@@ -307,6 +310,7 @@ export default {
 #role-nav {
   width: 100%;
   height: var(--height);
+  margin-top:1vh;
   text-align: left;
   display: inline-flex;
 }
@@ -354,17 +358,34 @@ export default {
   flex-direction: column;
   justify-content: space-between;
 }
+.role-container {
+  width: 145%;
+  /* display: flex; */
+  height: calc(115% - var(--height));
+  top: var(--height);
+  margin: auto;
+  position: absolute;
+}
 #role-logo {
+  margin-top: 5vh;
   position: relative;
   max-width: 110%;
   z-index: 5;
+  text-align: left;
+  left: 0;
+}
+#role-logo > img {
+  height: 10%;
+  width: 40%;
 }
 #role-name {
-  right: 3vw;
-  float: right;
+  right: 85vw;
   position: relative;
-  max-width: 230%;
   z-index: 20;
+  max-width: 100%;
+}
+#role-name > img {
+  width: 80%;
 }
 #role-cover {
   left: 0vw;
@@ -383,11 +404,11 @@ export default {
 .role-img {
   /* top: var(--height); */
   /* left: 0px; */
-  /* position: absolute; */
-  max-height: 100%;
-  min-height: 100%;
-  max-width: 300%;
+  position: absolute;
+  min-width: 100%;
+  max-width: 100%;
   margin: auto;
+  right: -3vw;
 }
 #role-ring {
   left: 0vw;
