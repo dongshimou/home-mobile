@@ -12,7 +12,7 @@
               :size="{ width: '50px', height: '50px' }"
               :style="{ 'margin-top' : ['calc(50vh - 25px)']}"
             ></vue-loading>
-            <role v-for="(role,index) in roles" v-show="success&&index==cur" :role="role" :key="index" />
+            <role v-for="(role,index) in roles" v-show="success&&index==cur" :role="role" :key="index" @load="loadCount()" />
           </div>
           <!-- <div class="page-1 page">
             <img src="@/assets/1.png" />
@@ -45,6 +45,7 @@ export default {
       success: false,
       height: "0px",
       cur: 0,
+      count:0,
       opts: {
         start: 0,
         dir: "v",
@@ -244,12 +245,19 @@ export default {
         that.success = true;
         that.load(0);
       }, 2000);
+    },
+    loadCount:function(){
+      this.count++;
+      if(this.count==this.roles.length){
+        console.log(this.count)
+        this.loading()
+      }
     }
   },
   created: function() {},
   mounted: function() {
     this.height = window.innerHeight + "px";
-    this.loading();
+    // this.loading();
   }
 };
 </script>

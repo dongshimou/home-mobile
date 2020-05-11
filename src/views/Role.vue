@@ -40,11 +40,24 @@
           <div id="role-job-checkbox">
             <!-- 文字 -->
             <div id="role-job-checkbox-txt">
-              <img v-for="(job,index) in role.job" :src="getImgUrl('label',job.name)" alt="" :key="index">
+              <img
+                v-for="(job,index) in role.job"
+                :src="getImgUrl('label',job.name)"
+                alt
+                :key="index"
+              />
             </div>
             <!-- 图标 -->
             <div id="role-job-checkbox-img">
-              <img class="role-job-checkbox-img-class"  v-for="(job,index) in role.job" :src="getImgUrl('icon',job.name)" alt="" :key="index" :style="{'background-color':job.color}" :class="{imgLight:!istrans(job.color)}">
+              <img
+                class="role-job-checkbox-img-class"
+                v-for="(job,index) in role.job"
+                :src="getImgUrl('icon',job.name)"
+                alt
+                :key="index"
+                :style="{'background-color':job.color}"
+                :class="{imgLight:!istrans(job.color)}"
+              />
             </div>
           </div>
         </div>
@@ -60,9 +73,8 @@
         alt
       />
     </div>
-
     <div class="role-container">
-      <img :src="getImgUrl('circle/',role.id)" alt class="role-img heart" />
+      <img :src="getImgUrl('circle/',role.id)" alt class="role-img heart" @load="load_ring=true" />
     </div>
 
     <img id="role-arrow" class="animated infinite bounce slow" src="@/assets/arrow.png" />
@@ -91,15 +103,17 @@ export default {
   },
   data: function() {
     return {
-      start: false
+      start: false,
+      load_role: false,
+      load_ring: false
     };
   },
   methods: {
     getImgUrl(icon, id) {
       return require("@/assets/" + icon + id + ".png");
     },
-    istrans(c){
-      return c=='#ffffff00'
+    istrans(c) {
+      return c == "#ffffff00";
     },
     checkScreen() {
       let width = window.innerWidth;
@@ -118,6 +132,21 @@ export default {
       this.role.ring.width = el.width;
       // console.log("role.ring", that.role.ring, "el", el.height, el.width);
       this.start = true;
+      this.load_role = true;
+    },
+    loadSuccess() {
+      if (this.load_role && this.load_ring) {
+        this.$emit("load");
+        console.log("emit load")
+      }
+    }
+  },
+  watch: {
+    load_role: function() {
+      this.loadSuccess();
+    },
+    load_ring: function() {
+      this.loadSuccess();
     }
   },
   props: {
@@ -133,16 +162,16 @@ export default {
           },
           job: [
             {
-              name:"sing",
-              color:"#ffffff00"
+              name: "sing",
+              color: "#ffffff00"
             },
             {
-              name:"game",
-              color:"#ffffff00"
+              name: "game",
+              color: "#ffffff00"
             },
             {
-              name:"dance",
-              color:"#ffffff00"
+              name: "dance",
+              color: "#ffffff00"
             }
           ],
           ring: {
@@ -413,8 +442,8 @@ export default {
 </style>
 
 <style scoped>
-.imgLight{
-  filter :brightness(100%);
+.imgLight {
+  filter: brightness(100%);
   -webkit-filter: brightness(100%);
   -moz-filter: brightness(100%);
   -ms-filter: brightness(100%);
