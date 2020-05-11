@@ -1,18 +1,24 @@
 <template>
   <div id="virtual">
-    <div class="fullpage-root" :style="{height:height}" v-show="!isWide">
+    <vue-loading
+      v-show="!success"
+      type="spin"
+      color="#ffffff"
+      :size="{ width: '50px', height: '50px' }"
+      :style="{ 'margin-top' : ['calc(50vh - 25px)']}"
+    ></vue-loading>
+    <div class="fullpage-root" :style="{height:height}">
       <div class="fullpage-container">
         <div class="fullpage-wp" v-fullpage="opts" ref="fullpage">
           <!-- page -->
           <div class="page-0 page" :style="{height:height}">
-            <vue-loading
-              v-show="!success"
-              type="spin"
-              color="#ffffff"
-              :size="{ width: '50px', height: '50px' }"
-              :style="{ 'margin-top' : ['calc(50vh - 25px)']}"
-            ></vue-loading>
-            <role v-for="(role,index) in roles" v-show="success&&index==cur" :role="role" :key="index" @loadimg="loadCount()" />
+            <role
+              v-for="(role,index) in roles"
+              v-show="success&&index==cur"
+              :role="role"
+              :key="index"
+              @loadimg="loadCount()"
+            />
             <!-- <role :role="roles[0]" @load="success=true" /> -->
           </div>
           <!-- <div class="page-1 page">
@@ -258,28 +264,31 @@ export default {
       setTimeout(function() {
         that.success = true;
         that.load(0);
+        that.handleResize();
       }, 2000);
     },
     loadCount: function() {
       this.count++;
       if (this.count == this.roles.length) {
-        console.log(this.count);
         this.loading();
       }
     },
     handleResize: function() {
-      this.height = window.innerHeight + "px";
       if (window.innerWidth > window.innerHeight) {
         this.isWide = true;
       } else {
         this.isWide = false;
       }
+      this.initSize();
+    },
+    initSize:function(){
+      this.height = window.innerHeight + "px";
     }
   },
   created: function() {},
   watch: {},
   mounted: function() {
-    this.handleResize()
+    this.initSize();
     window.addEventListener("resize", this.handleResize);
   }
 };
