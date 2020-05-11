@@ -1,10 +1,10 @@
 <template>
   <div id="virtual">
-    <div class="fullpage-root" :style="{height:height}">
+    <div class="fullpage-root" :style="{height:height}" v-show="!isWide">
       <div class="fullpage-container">
         <div class="fullpage-wp" v-fullpage="opts" ref="fullpage">
           <!-- page -->
-          <div class="page-0 page">
+          <div class="page-0 page" :style="{height:height}">
             <vue-loading
               v-show="!success"
               type="spin"
@@ -13,17 +13,30 @@
               :style="{ 'margin-top' : ['calc(50vh - 25px)']}"
             ></vue-loading>
             <role v-for="(role,index) in roles" v-show="success&&index==cur" :role="role" :key="index" @loadimg="loadCount()" />
+            <!-- <role :role="roles[0]" @load="success=true" /> -->
           </div>
           <!-- <div class="page-1 page">
             <img src="@/assets/1.png" />
           </div>-->
-          <div class="page-2 page">
+          <div class="page-2 page" :style="{height:height}">
             <room />
           </div>
           <!-- <div class="page-3 page">
             <img src="@/assets/2.png" />
           </div>-->
         </div>
+      </div>
+    </div>
+    <div id="page-wide" style="display: block;" v-show="isWide">
+      <div id="page-wide-box">
+        <img
+          src="@/assets/route.png"
+          id="wide-box-img"
+          style="display:inline-block;"
+          width="128"
+          height="194"
+        />
+        <span id="wide-box-txt">为了更好的体验，请将手机/平板竖过来</span>
       </div>
     </div>
   </div>
@@ -45,7 +58,8 @@ export default {
       success: false,
       height: "0px",
       cur: 0,
-      count:0,
+      count: 0,
+      isWide: false,
       opts: {
         start: 0,
         dir: "v",
@@ -61,16 +75,16 @@ export default {
           },
           job: [
             {
-              name:"sing",
-              color:"#176fe3"
+              name: "sing",
+              color: "#176fe3"
             },
             {
-              name:"game",
-              color:"#ffffff00"
+              name: "game",
+              color: "#ffffff00"
             },
             {
-              name:"dance",
-              color:"#ffffff00"
+              name: "dance",
+              color: "#ffffff00"
             }
           ],
           ring: {
@@ -96,16 +110,16 @@ export default {
           },
           job: [
             {
-              name:"sing",
-              color:"#6435ce"
+              name: "sing",
+              color: "#6435ce"
             },
             {
-              name:"game",
-              color:"#ffffff00"
+              name: "game",
+              color: "#ffffff00"
             },
             {
-              name:"dance",
-              color:"#ffffff00"
+              name: "dance",
+              color: "#ffffff00"
             }
           ],
           ring: {
@@ -130,16 +144,16 @@ export default {
           },
           job: [
             {
-              name:"sing",
-              color:"#ff886c"
+              name: "sing",
+              color: "#ff886c"
             },
             {
-              name:"game",
-              color:"#ffffff00"
+              name: "game",
+              color: "#ffffff00"
             },
             {
-              name:"dance",
-              color:"#ffffff00"
+              name: "dance",
+              color: "#ffffff00"
             }
           ],
           ring: {
@@ -164,16 +178,16 @@ export default {
           },
           job: [
             {
-              name:"sing",
-              color:"#ff82a4ff"
+              name: "sing",
+              color: "#ff82a4ff"
             },
             {
-              name:"game",
-              color:"#ffffff00"
+              name: "game",
+              color: "#ffffff00"
             },
             {
-              name:"dance",
-              color:"#ffffff00"
+              name: "dance",
+              color: "#ffffff00"
             }
           ],
           ring: {
@@ -198,16 +212,16 @@ export default {
           },
           job: [
             {
-              name:"game",
-              color:"#13aea6"
+              name: "game",
+              color: "#13aea6"
             },
             {
-              name:"sing",
-              color:"#ffffff00"
+              name: "sing",
+              color: "#ffffff00"
             },
             {
-              name:"dance",
-              color:"#ffffff00"
+              name: "dance",
+              color: "#ffffff00"
             }
           ],
           ring: {
@@ -246,18 +260,27 @@ export default {
         that.load(0);
       }, 2000);
     },
-    loadCount:function(){
+    loadCount: function() {
       this.count++;
-      if(this.count==this.roles.length){
-        console.log(this.count)
-        this.loading()
+      if (this.count == this.roles.length) {
+        console.log(this.count);
+        this.loading();
+      }
+    },
+    handleResize: function() {
+      this.height = window.innerHeight + "px";
+      if (window.innerWidth > window.innerHeight) {
+        this.isWide = true;
+      } else {
+        this.isWide = false;
       }
     }
   },
   created: function() {},
+  watch: {},
   mounted: function() {
-    this.height = window.innerHeight + "px";
-    // this.loading();
+    this.handleResize()
+    window.addEventListener("resize", this.handleResize);
   }
 };
 </script>
@@ -265,6 +288,54 @@ export default {
 <style>
 .page-2 {
   background-color: black;
+}
+#page-wide {
+  width: 100%;
+  height: 100%;
+  background: #32373b;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 9999;
+  display: none;
+  text-align: center;
+}
+#page-wide-box {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+#wide-box-txt {
+  font-size: 22px;
+  display: block;
+  color: #ffd40a;
+  text-align: center;
+  width: 100%;
+  padding-top: 10px;
+  line-height: 2;
+}
+#wide-box-img {
+  animation: routeIt 1.5s infinite;
+}
+
+@keyframes routeIt {
+  0% {
+    transform: rotate(-90deg);
+  }
+  30% {
+    transform: rotate(-90deg);
+  }
+  70% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 </style>
 

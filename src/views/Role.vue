@@ -74,23 +74,25 @@
       />
     </div>
     <div class="role-container">
-      <img :src="getImgUrl('circle/',role.id)" alt class="role-img heart" @load="load_ring=true" />
+      <!-- <img :src="getImgUrl('circle/',role.id)" alt class="role-img heart" @load="load_ring=true" /> -->
+      <img :src="getImgUrl('circle/',role.id)" alt class="role-img animated infinite pulse
+faster" @load="load_ring=true" />
     </div>
 
     <img id="role-arrow" class="animated infinite bounce slow" src="@/assets/arrow.png" />
     <div id="role-bottom"></div>
     <div id="role-line" :style="{'background-color':role.line.color}" />
-    <ring
+    <!-- <ring
       id="role-ring"
       :color="role.ring.color"
       :height="role.ring.height"
       :width="role.ring.width"
       :start="false"
-    />
+    /> -->
   </div>
 </template>
 <script>
-import Ring from "@/components/Ring.vue";
+// import Ring from "@/components/Ring.vue";
 // import Paint from "@/components/Paint.vue";
 export default {
   name: "role",
@@ -99,7 +101,7 @@ export default {
   //   },
   components: {
     // Paint,
-    Ring
+    // Ring
   },
   data: function() {
     return {
@@ -409,6 +411,7 @@ export default {
 #role-job-checkbox {
   bottom: 20px;
   position: relative;
+  max-height: 50vh;
 }
 #role-job-checkbox-txt {
   /* height: 100%; */

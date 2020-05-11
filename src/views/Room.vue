@@ -7,6 +7,8 @@
     <div id="room-context">
       <live v-for="(role,index) in roles" :key="index" :role="role" />
     </div>
+    <div id="room-space">
+    </div>
     <div id="room-ref">
       <img src="@/assets/contact.png" alt />
     </div>
@@ -139,13 +141,17 @@ export default {
 .role-room {
   width: 30vw;
 }
+#room-space{
+  height: 100%;
+}
 #room-ref {
-  position: absolute;
+  position: relative;
   bottom: 5vh;
+  height: 30%;
   width: 100%;
 }
 #room-ref > img {
-  margin-top: 5vh;
+  /* margin-top: 5vh; */
   width: 40%;
   max-width: 100%;
 }

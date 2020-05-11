@@ -94,8 +94,8 @@ export default {
   #live-box {
     /* margin-left: 32px; */
     /* margin-right: 32px; */
-    max-height: 100px;
-    max-width: 100px;
+    max-height: 75px;
+    max-width: 75px;
   }
   .online-label {
     font-size: 150%;
