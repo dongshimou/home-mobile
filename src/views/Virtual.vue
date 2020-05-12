@@ -7,6 +7,9 @@
       :size="{ width: '50px', height: '50px' }"
       :style="{ 'margin-top' : ['calc(50vh - 25px)'], 'margin-bottom':['calc(50vh - 25px)']}"
     ></vue-loading>
+    <slide-out @close="onClose" :visible.sync="showMenu" size="50%">
+      <div slot="header"></div>敬请期待
+    </slide-out>
     <div class="fullpage-root" :style="{height:height}">
       <div class="fullpage-container">
         <div class="fullpage-wp" v-fullpage="opts" ref="fullpage">
@@ -18,12 +21,13 @@
               :role="role"
               :key="index"
               @loadimg="loadCount()"
+              @popMenu="popMenu()"
             />
             <!-- <role :role="roles[1]" @load="success=true" /> -->
           </div>
           <!-- <div class="page-1 page">
             <img src="@/assets/1.png" />
-          </div> -->
+          </div>-->
           <div class="page-2 page" :style="{height:height}">
             <room />
           </div>
@@ -61,6 +65,7 @@ export default {
   },
   data: function() {
     return {
+      showMenu: false,
       success: false,
       height: "0px",
       cur: 0,
@@ -249,10 +254,10 @@ export default {
   },
   methods: {
     load: function(i) {
-      this.cur = i;
-      console.log("load", i);
+      let that = this;
+      let func = that.load;
       this.role = this.roles[i];
-      let func = this.load;
+      this.cur = i;
       i++;
       if (i >= this.roles.length) {
         i = 0;
@@ -263,7 +268,7 @@ export default {
       let that = this;
       setTimeout(function() {
         that.success = true;
-        that.load(0);
+        that.load(that.cur);
         that.handleResize();
       }, 2000);
     },
@@ -283,6 +288,12 @@ export default {
     },
     initSize: function() {
       this.height = window.innerHeight + "px";
+    },
+    popMenu: function() {
+      this.showMenu = !this.showMenu;
+    },
+    onClose() {
+      // this.load(this.cur)
     }
   },
   created: function() {},

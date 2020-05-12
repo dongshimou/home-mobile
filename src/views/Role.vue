@@ -88,11 +88,6 @@
         @load="load_ring=true"
       />
     </div>
-<slide-out @close="onClose" :visible.sync="showMenu" size="50%">
-    <div slot="header">
-    </div>
-    敬请期待
-</slide-out>
     <img id="role-arrow" class="animated infinite bounce slow" src="@/assets/arrow.png" />
     <div id="role-bottom"></div>
     <div id="role-line" :style="{'background-color':role.line.color}" />
@@ -119,7 +114,6 @@ export default {
   },
   data: function() {
     return {
-      showMenu:false,
       start: false,
       load_role: false,
       load_ring: false
@@ -130,11 +124,7 @@ export default {
       return require("@/assets/" + icon + id + ".png");
     },
     popMenu(){
-      this.showMenu=!this.showMenu
-      console.log(this.showMenu)
-    },
-    onClose(){
-
+      this.$emit("popMenu")
     },
     istrans(c) {
       return c == "#ffffff00";
@@ -161,7 +151,7 @@ export default {
     loadSuccess() {
       if (this.load_role && this.load_ring) {
         this.$emit("loadimg");
-        console.log("emit loadimg");
+        // console.log("emit loadimg");
       }
     }
   },
@@ -349,7 +339,7 @@ export default {
   width: 50%;
   display: flex;
   height: 100%;
-  margin-left: calc(var(--height) / 3);
+  margin-left: calc(var(--height) / 2);
   flex-direction: row;
 }
 
@@ -357,7 +347,7 @@ export default {
   width: 50%;
   height: 100%;
   display: flex;
-  margin-right: calc(var(--height) / 3);
+  margin-right: calc(var(--height) / 2);
   flex-direction: row-reverse;
 }
 .role-nav-btn {
@@ -466,7 +456,7 @@ export default {
   width: 70%;
   height: 70%;
   margin-bottom: 15px;
-  z-index: 5;
+  z-index: 15;
 }
 #role-job-checkbox-img {
   /* height: 100%; */
@@ -479,7 +469,7 @@ export default {
   max-height: 100%;
   width: 50%;
   height: 50%;
-  z-index: 5;
+  z-index: 15;
   border-radius: 3px;
 }
 </style>
