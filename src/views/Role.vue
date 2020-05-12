@@ -21,7 +21,7 @@
       </div>
       <div id="role-nav-right">
         <div class="role-nav-btn role-nav-box">
-          <img src="@/assets/menu.png" alt />
+          <img @click="popMenu()" src="@/assets/menu.png" alt />
         </div>
       </div>
     </div>
@@ -61,6 +61,7 @@
         </div>
       </div>
     </div>
+
     <div class="role-container">
       <div id="role-logo">
         <img class="animated bounceInLeft" :src="getImgUrl('logo/',role.id)" alt />
@@ -87,7 +88,11 @@
         @load="load_ring=true"
       />
     </div>
-
+<slide-out @close="onClose" :visible.sync="showMenu" size="50%">
+    <div slot="header">
+    </div>
+    敬请期待
+</slide-out>
     <img id="role-arrow" class="animated infinite bounce slow" src="@/assets/arrow.png" />
     <div id="role-bottom"></div>
     <div id="role-line" :style="{'background-color':role.line.color}" />
@@ -114,6 +119,7 @@ export default {
   },
   data: function() {
     return {
+      showMenu:false,
       start: false,
       load_role: false,
       load_ring: false
@@ -122,6 +128,13 @@ export default {
   methods: {
     getImgUrl(icon, id) {
       return require("@/assets/" + icon + id + ".png");
+    },
+    popMenu(){
+      this.showMenu=!this.showMenu
+      console.log(this.showMenu)
+    },
+    onClose(){
+
     },
     istrans(c) {
       return c == "#ffffff00";
@@ -297,6 +310,7 @@ export default {
 }
 .role-nav-box > a > img {
   width: 100%;
+  z-index: 100;
 }
 .role-nav-box > img {
   width: 100%;
@@ -310,7 +324,7 @@ export default {
 #role-nav {
   width: 100%;
   height: var(--height);
-  margin-top:1vh;
+  margin-top: 1vh;
   text-align: left;
   display: inline-flex;
 }
@@ -365,6 +379,7 @@ export default {
   top: var(--height);
   margin: auto;
   position: absolute;
+  pointer-events:none;
 }
 #role-logo {
   margin-top: 5vh;

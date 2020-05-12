@@ -22,6 +22,14 @@ Vue.use(VueResource);
 import VueLoading from 'vue-loading-template'
 Vue.use(VueLoading, /** options **/)
 
+// slideout
+import SlideOut from '@hyjiacan/vue-slideout'
+import '@hyjiacan/vue-slideout/lib/slideout.css'
+// import SlideOut component, and set the defaults props
+Vue.use(SlideOut, {
+  // set props here
+})
+
 Vue.config.productionTip = false
 
 new Vue({

@@ -103,7 +103,7 @@ export default {
             color: "#3d9def"
           },
           line: {
-            color: "#ffffff"
+            color: "#c5e2fa"
           }
         },
 
@@ -138,7 +138,7 @@ export default {
             color: "#34288e"
           },
           line: {
-            color: "#ffffff"
+            color: "#000000"
           }
         },
         {
