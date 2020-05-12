@@ -78,6 +78,7 @@ export default {
       },
       roles: [
         {
+          // 0
           id: 0, // 0 1 6 7 8
           link: {
             weibo: "//weibo.com",
@@ -94,7 +95,7 @@ export default {
               color: "#ffffff00"
             },
             {
-              name: "dance",
+              name: "eat",
               color: "#ffffff00"
             }
           ],
@@ -111,76 +112,8 @@ export default {
             color: "#c5e2fa"
           }
         },
-
         {
-          id: 1, // 0 1 6 7 8
-          link: {
-            weibo: "//weibo.com",
-            wechat: "//wexin.com",
-            qq: "//qq.com"
-          },
-          job: [
-            {
-              name: "sing",
-              color: "#6435ce"
-            },
-            {
-              name: "game",
-              color: "#ffffff00"
-            },
-            {
-              name: "dance",
-              color: "#ffffff00"
-            }
-          ],
-          ring: {
-            color: "#171241",
-            height: window.innerHeight,
-            width: window.innerWidth,
-            space: 24
-          },
-          background: {
-            color: "#34288e"
-          },
-          line: {
-            color: "#000000"
-          }
-        },
-        {
-          id: 6, // 0 1 6 7 8
-          link: {
-            weibo: "//weibo.com",
-            wechat: "//wexin.com",
-            qq: "//qq.com"
-          },
-          job: [
-            {
-              name: "sing",
-              color: "#ff886c"
-            },
-            {
-              name: "game",
-              color: "#ffffff00"
-            },
-            {
-              name: "dance",
-              color: "#ffffff00"
-            }
-          ],
-          ring: {
-            color: "#fd9964",
-            height: window.outerHeight,
-            width: window.outerWidth,
-            space: 24
-          },
-          background: {
-            color: "#ffc07d"
-          },
-          line: {
-            color: "#ffffff"
-          }
-        },
-        {
+          // 7
           id: 7, // 0 1 6 7 8
           link: {
             weibo: "//weibo.com",
@@ -197,7 +130,7 @@ export default {
               color: "#ffffff00"
             },
             {
-              name: "dance",
+              name: "eat",
               color: "#ffffff00"
             }
           ],
@@ -215,6 +148,147 @@ export default {
           }
         },
         {
+          // 6
+          id: 6, // 0 1 6 7 8
+          link: {
+            weibo: "//weibo.com",
+            wechat: "//wexin.com",
+            qq: "//qq.com"
+          },
+          job: [
+            {
+              name: "sing",
+              color: "#ff886c"
+            },
+            {
+              name: "game",
+              color: "#ffffff00"
+            },
+            {
+              name: "eat",
+              color: "#ffffff00"
+            }
+          ],
+          ring: {
+            color: "#fd9964",
+            height: window.outerHeight,
+            width: window.outerWidth,
+            space: 24
+          },
+          background: {
+            color: "#ffc07d"
+          },
+          line: {
+            color: "#ffffff"
+          }
+        },
+        {
+          // 10
+          id: 10,
+          link: {
+            weibo: "//weibo.com",
+            wechat: "//wexin.com",
+            qq: "//qq.com"
+          },
+          job: [
+            {
+              name: "game",
+              color: "#f68c60"
+            },
+            {
+              name: "sing",
+              color: "#ffffff00"
+            },
+            {
+              name: "eat",
+              color: "#ffffff00"
+            }
+          ],
+          ring: {
+            color: "#25d9af",
+            height: window.innerHeight,
+            width: window.innerWidth,
+            space: 24
+          },
+          background: {
+            color: "#f9e171"
+          },
+          line: {
+            color: "#ffffff"
+          }
+        },
+        {
+          // 3
+          id: 3,
+          link: {
+            weibo: "//weibo.com",
+            wechat: "//wexin.com",
+            qq: "//qq.com"
+          },
+          job: [
+            {
+              name: "game",
+              color: "#326f9d"
+            },
+            {
+              name: "sing",
+              color: "#ffffff00"
+            },
+            {
+              name: "eat",
+              color: "#ffffff00"
+            }
+          ],
+          ring: {
+            color: "#25d9af",
+            height: window.innerHeight,
+            width: window.innerWidth,
+            space: 24
+          },
+          background: {
+            color: "#3bcfd0"
+          },
+          line: {
+            color: "#045d7b"
+          }
+        },
+        {
+          // 1
+          id: 1, // 0 1 6 7 8
+          link: {
+            weibo: "//weibo.com",
+            wechat: "//wexin.com",
+            qq: "//qq.com"
+          },
+          job: [
+            {
+              name: "sing",
+              color: "#6435ce"
+            },
+            {
+              name: "game",
+              color: "#ffffff00"
+            },
+            {
+              name: "eat",
+              color: "#ffffff00"
+            }
+          ],
+          ring: {
+            color: "#171241",
+            height: window.innerHeight,
+            width: window.innerWidth,
+            space: 24
+          },
+          background: {
+            color: "#34288e"
+          },
+          line: {
+            color: "#000000"
+          }
+        },
+        {
+          // 8
           id: 8, // 0 1 6 7 8
           link: {
             weibo: "//weibo.com",
@@ -231,7 +305,7 @@ export default {
               color: "#ffffff00"
             },
             {
-              name: "dance",
+              name: "eat",
               color: "#ffffff00"
             }
           ],

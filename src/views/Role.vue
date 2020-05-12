@@ -40,7 +40,7 @@
             <div id="role-job-checkbox-txt">
               <img
                 v-for="(job,index) in role.job"
-                :src="getImgUrl('label',job.name)"
+                :src="getImgUrl('show/label',job.name)"
                 alt
                 :key="index"
               />
@@ -50,11 +50,11 @@
               <img
                 class="role-job-checkbox-img-class"
                 v-for="(job,index) in role.job"
-                :src="getImgUrl('icon',job.name)"
+                :src="getImgUrl('show/icon',job.name)"
                 alt
                 :key="index"
                 :style="{'background-color':job.color}"
-                :class="{imgLight:!istrans(job.color)}"
+                :class="{imgLight:istrans(job.color)}"
               />
             </div>
           </div>
@@ -476,11 +476,7 @@ export default {
 
 <style scoped>
 .imgLight {
-  filter: brightness(100%);
-  -webkit-filter: brightness(100%);
-  -moz-filter: brightness(100%);
-  -ms-filter: brightness(100%);
-  -o-filter: brightness(100%);
+  opacity: 0.7;
 }
 </style>
 
