@@ -16,9 +16,9 @@
           <!-- page -->
           <div class="page-0 page" :style="{height:height}">
             <div id="role-change">
-              <div id="role-left" @click="rolePrev()"></div>
+              <div id="role-left" class="role-jump" @click="rolePrev()"></div>
               <div id="role-mid"></div>
-              <div id="role-right" @click="roleNext()"></div>
+              <div id="role-right" class="role-jump" @click="roleNext()"></div>
             </div>
             <role
               v-for="(role,index) in roles"
@@ -504,5 +504,9 @@ img {
 #role-right {
   height: 100%;
   width: 30%;
+}
+.role-jump:hover{
+  background-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 </style>
