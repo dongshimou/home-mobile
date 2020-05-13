@@ -1,15 +1,19 @@
 <template>
-  <div id="virtual">
+  <div id="virtual" :class="{blackback:success,blueback:!success}">
     <vue-loading
       v-show="!success"
       type="spin"
       color="#ffffff"
       :size="{ width: '50px', height: '50px' }"
-      :style="{ 'margin-top' : ['calc(50vh - 25px)'], 'margin-bottom':['calc(50vh - 25px)']}"
+      :style="{ 'padding-top' : ['calc(50vh - 25px)'], 'margin-bottom':['calc(50vh - 25px)'],'background-color':['#ffffff00']}"
     ></vue-loading>
     <slide-out @close="onClose" :visible.sync="showMenu" size="50%">
       <div slot="header"></div>敬请期待
     </slide-out>
+    <div id="role-change">
+      <div id="role-left" @click="rolePrev()"></div>
+      <div id="role-right" @click="roleNext()"></div>
+    </div>
     <div class="fullpage-root" :style="{height:height}">
       <div class="fullpage-container">
         <div class="fullpage-wp" v-fullpage="opts" ref="fullpage">
@@ -65,6 +69,7 @@ export default {
   },
   data: function() {
     return {
+      pause: 0,
       showMenu: false,
       success: false,
       height: "0px",
@@ -327,16 +332,29 @@ export default {
     };
   },
   methods: {
-    load: function(i) {
-      let that = this;
-      let func = that.load;
-      this.role = this.roles[i];
-      this.cur = i;
-      i++;
-      if (i >= this.roles.length) {
-        i = 0;
+    apply: function(isNext) {
+      if (isNext) {
+        this.cur++;
+      } else {
+        this.cur--;
       }
-      setTimeout(func, 5000, i);
+      if (this.cur >= this.roles.length) {
+        this.cur = 0;
+      }
+      if (this.cur < 0) {
+        this.cur = this.roles.length - 1;
+      }
+      this.role = this.roles[this.cur];
+    },
+    load: function() {
+      if (this.pause <= 0) {
+        // console.log("load not pause");
+        this.apply(true);
+      } else {
+        // console.log("load pause");
+      }
+      let func = this.load;
+      setTimeout(func, 5000);
     },
     loading: function() {
       let that = this;
@@ -368,6 +386,22 @@ export default {
     },
     onClose() {
       // this.load(this.cur)
+    },
+    roleNext() {
+      this.pause++;
+      this.apply(true);
+      let that = this;
+      setTimeout(function() {
+        that.pause--;
+      }, 5000);
+    },
+    rolePrev() {
+      this.pause++;
+      this.apply(false);
+      let that = this;
+      setTimeout(function() {
+        that.pause--;
+      }, 5000);
     }
   },
   created: function() {},
@@ -416,6 +450,12 @@ export default {
 #wide-box-img {
   animation: routeIt 1.5s infinite;
 }
+.blackback {
+  background-color: black;
+}
+.blueback {
+  background-color: #3d9def;
+}
 
 @keyframes routeIt {
   0% {
@@ -439,5 +479,21 @@ img {
   height: auto;
   max-width: 100%;
   max-height: 100%;
+}
+#role-change {
+  position: fixed;
+  width: calc(100% - 4vw * 2);
+  height: calc(100% - 10vh * 2);
+  margin: 10vh 4vw;
+  z-index: 1000;
+  display: flex;
+}
+#role-left {
+  height: 100%;
+  width: 50%;
+}
+#role-right {
+  width: 50%;
+  height: 100%;
 }
 </style>
