@@ -10,15 +10,16 @@
     <slide-out @close="onClose" :visible.sync="showMenu" size="50%">
       <div slot="header"></div>敬请期待
     </slide-out>
-    <div id="role-change">
-      <div id="role-left" @click="rolePrev()"></div>
-      <div id="role-right" @click="roleNext()"></div>
-    </div>
     <div class="fullpage-root" :style="{height:height}">
       <div class="fullpage-container">
         <div class="fullpage-wp" v-fullpage="opts" ref="fullpage">
           <!-- page -->
           <div class="page-0 page" :style="{height:height}">
+            <div id="role-change">
+              <div id="role-left" @click="rolePrev()"></div>
+              <div id="role-mid"></div>
+              <div id="role-right" @click="roleNext()"></div>
+            </div>
             <role
               v-for="(role,index) in roles"
               v-show="success&&index==cur"
@@ -360,13 +361,15 @@ export default {
       let that = this;
       setTimeout(function() {
         that.success = true;
+        that.cur = -1;
         that.load(that.cur);
         that.handleResize();
       }, 2000);
     },
     loadCount: function() {
       this.count++;
-      if (this.count == this.roles.length) {
+      // 未全部加载也要出界面
+      if (this.count >= this.roles.length - 1) {
         this.loading();
       }
     },
@@ -482,18 +485,24 @@ img {
 }
 #role-change {
   position: fixed;
-  width: calc(100% - 4vw * 2);
-  height: calc(100% - 10vh * 2);
-  margin: 10vh 4vw;
-  z-index: 1000;
+  margin: 30vh 5vw;
+  width: calc(100% - 5vw * 2);
+  height: calc(100% - 30vh * 2);
   display: flex;
+  z-index: 1000;
 }
 #role-left {
   height: 100%;
-  width: 50%;
+  width: 30%;
+}
+#role-mid {
+  height: 100%;
+  width: 40%;
+  pointer-events: none;
+  z-index: 0;
 }
 #role-right {
-  width: 50%;
   height: 100%;
+  width: 30%;
 }
 </style>
