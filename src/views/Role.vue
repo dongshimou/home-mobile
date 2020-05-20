@@ -470,7 +470,7 @@ export default {
   width: 50%;
   height: 50%;
   z-index: 15;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
   border-radius: 3px;
 }
 </style>

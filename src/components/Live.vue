@@ -30,7 +30,7 @@ export default {
           response => {
             // console.log(response);
             // 0 未播,1 开播,2 轮播
-            if (response.body.data.room_info.live_status == 1) {
+            if (response.body.data.room_info.live_status != 0) {
               this.isOnline = true;
             }
           },
